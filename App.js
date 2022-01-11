@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { View } from 'react-native';
+import Header from './components/Header';
+import CurrencyConverter from './components/CurrencyConverter';
 
 export default function App() {
+  const [firstValue, setFirstValue] = useState("USD");
+  const [secondValue, setSecondValue] = useState("EUR");
+
+  const chooseValue = (value) => setFirstValue(value);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+        <Header/> 
+        <CurrencyConverter firstValue={firstValue} chooseValue={chooseValue}/>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
